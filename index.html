@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <title>Vedant Tapase | Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; border: none; outline: none; font-family: 'Poppins', sans-serif; }
+        :root { --bg-color: #080808; --second-bg-color: #131313; --main-color: #b74b4b; --white: #ffffff; }
+        html { font-size: 62.5%; scroll-behavior: smooth; }
+        body { background: var(--bg-color); color: var(--white); overflow-x: hidden; }
+
+        /* --- ENTRANCE ANIMATION --- */
+        .slash-container { position: fixed; top: 50%; left: 0; width: 100%; height: 4px; background: var(--main-color); z-index: 10000; box-shadow: 0 0 20px var(--main-color); animation: slashMove 1.5s ease-out forwards; }
+        @keyframes slashMove { 0% { width: 0; opacity: 1; } 70% { width: 100%; opacity: 1; height: 4px; } 100% { width: 100%; opacity: 0; height: 0; } }
+
+        /* --- HEADER --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; padding: 2.5rem 10%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        .logo { font-size: 3rem; color: var(--main-color); font-weight: 800; }
+        nav a { font-size: 1.8rem; color: var(--white); margin-left: 3.5rem; transition: 0.3s; }
+        nav a:hover { color: var(--main-color); }
+
+        /* --- SECTIONS --- */
+        section { min-height: 100vh; padding: 10rem 10% 2rem; }
+        .heading { text-align: center; font-size: 4.5rem; margin-bottom: 5rem; }
+        .heading span { color: var(--main-color); }
+
+        /* --- HOME --- */
+        .home { display: flex; justify-content: center; align-items: center; gap: 8rem; animation: fadeIn 2s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        .home-content h1 { font-size: 6.5rem; font-weight: 700; line-height: 1.1; }
+        .home-content h3 { font-size: 3.5rem; margin: 1.5rem 0; font-weight: 600; }
+        .home-content span { color: var(--main-color); }
+        .home-content p { font-size: 1.6rem; line-height: 1.8; margin-bottom: 3rem; color: #ccc; }
+
+        /* --- IMAGES --- */
+        .home-img { position: relative; animation: float 4s ease-in-out infinite; }
+        .home-img img:first-child { width: 30vw; border-radius: 50%; border: 4px solid var(--main-color); box-shadow: 0 0 25px var(--main-color); }
+        .image-icon { position: absolute; bottom: -10px; right: -10px; width: 80px; filter: drop-shadow(0 0 10px var(--main-color)); z-index: 100; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+
+        /* --- SOCIALS --- */
+        .social-icons { margin-bottom: 4rem; }
+        .social-icons a { display: inline-flex; justify-content: center; align-items: center; width: 4.5rem; height: 4.5rem; border: 0.2rem solid var(--main-color); font-size: 2.2rem; border-radius: 50%; color: var(--main-color); margin-right: 1.5rem; transition: 0.3s; }
+        .social-icons a:hover { background: var(--main-color); color: black; transform: translateY(-5px); box-shadow: 0 0 20px var(--main-color); }
+
+        /* --- ABOUT --- */
+        .about-content { max-width: 900px; margin: 0 auto; background: #1a1a1a; padding: 4rem; border-radius: 2rem; border-left: 5px solid var(--main-color); }
+        .about-content p { font-size: 1.7rem; line-height: 1.9; color: #ccc; margin-bottom: 1.8rem; }
+        .about-content p:last-child { margin-bottom: 0; }
+        .about-content strong { color: var(--main-color); }
+
+        /* --- EDUCATION --- */
+        .education { background-color: var(--second-bg-color); }
+        .education-card { background: #1a1a1a; padding: 3rem; border-radius: 2rem; border-left: 5px solid var(--main-color); max-width: 800px; margin: 0 auto; }
+        .education-card h3 { font-size: 2.4rem; margin-bottom: 1rem; }
+        .education-card p { font-size: 1.8rem; color: #ccc; }
+
+        /* --- SERVICES / TECHNOLOGIES --- */
+        .services-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
+        .services-box { background: var(--second-bg-color); padding: 3rem 2rem; border-radius: 2rem; text-align: center; transition: 0.4s; border: 1px solid transparent; }
+        .services-box:hover { border: 1px solid var(--main-color); transform: scale(1.02); }
+        .services-box i { font-size: 7rem; color: var(--main-color); }
+        .services-box h3 { font-size: 2.2rem; margin: 1.5rem 0 1.2rem; }
+        .services-box p { font-size: 1.5rem; color: #ccc; line-height: 1.7; }
+        .tech-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-top: 1.8rem; }
+        .tech-tags span { font-size: 1.3rem; padding: 0.6rem 1.4rem; border: 1px solid var(--main-color); border-radius: 3rem; color: var(--white); background: rgba(183, 75, 75, 0.08); transition: 0.3s; }
+        .tech-tags span:hover { background: var(--main-color); color: black; }
+
+        /* --- PROJECTS --- */
+        .projects { background-color: var(--second-bg-color); }
+        .projects-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
+        .project-card { background: #1a1a1a; border-radius: 2rem; padding: 2.8rem; border: 1px solid transparent; transition: 0.4s; display: flex; flex-direction: column; }
+        .project-card:hover { border-color: var(--main-color); transform: translateY(-6px); box-shadow: 0 10px 25px rgba(183, 75, 75, 0.2); }
+        .project-category { display: inline-block; align-self: flex-start; font-size: 1.2rem; letter-spacing: 0.1rem; text-transform: uppercase; color: var(--main-color); border: 1px solid var(--main-color); padding: 0.4rem 1.2rem; border-radius: 3rem; margin-bottom: 1.5rem; }
+        .project-card h3 { font-size: 2.2rem; margin-bottom: 1.2rem; }
+        .project-card p.project-desc { font-size: 1.5rem; color: #ccc; line-height: 1.8; margin-bottom: 1.8rem; flex-grow: 1; }
+        .project-tech { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2.2rem; }
+        .project-tech span { font-size: 1.2rem; padding: 0.5rem 1.2rem; border-radius: 3rem; background: rgba(183, 75, 75, 0.1); color: var(--main-color); }
+        .project-buttons { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+        .project-buttons a { font-size: 1.4rem; padding: 0.9rem 1.8rem; border-radius: 3rem; border: 1px solid var(--main-color); color: var(--white); transition: 0.3s; display: inline-flex; align-items: center; gap: 0.6rem; }
+        .project-buttons a:hover { background: var(--main-color); color: black; }
+        .project-buttons a.filled { background: var(--main-color); color: black; }
+        .project-buttons a.filled:hover { background: transparent; color: var(--white); }
+
+        /* --- CONTACT --- */
+        .contact { background-color: var(--bg-color); }
+        .contact-container { max-width: 900px; margin: 0 auto; text-align: center; }
+        .contact-intro { font-size: 1.7rem; color: #ccc; margin-bottom: 4rem; line-height: 1.8; }
+        .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
+        .contact-card { display: flex; align-items: center; gap: 1.6rem; background: #1a1a1a; padding: 2rem 2.2rem; border-radius: 1.5rem; border: 1px solid transparent; transition: 0.3s; text-align: left; }
+        .contact-card:hover { border-color: var(--main-color); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(183, 75, 75, 0.2); }
+        .contact-card i { font-size: 2.8rem; color: var(--main-color); flex-shrink: 0; width: 4rem; text-align: center; }
+        .contact-card .contact-label { font-size: 1.3rem; color: #999; margin-bottom: 0.3rem; }
+        .contact-card .contact-value { font-size: 1.6rem; color: var(--white); word-break: break-word; }
+
+        /* --- TYPING ANIMATION --- */
+        .typing-text span::before { content: ""; color: var(--main-color); animation: words 10s infinite; }
+        @keyframes words { 0%, 50% { content: "AIML Engineer"; } 51%, 100% { content: "AI Specialist"; } }
+
+        .btn { display: inline-block; padding: 1.3rem 3.2rem; background: var(--main-color); border-radius: 4rem; font-size: 1.7rem; color: black; font-weight: 600; transition: 0.3s; box-shadow: 0 0 15px var(--main-color); }
+
+        footer { text-align: center; padding: 3rem; background: var(--bg-color); border-top: 1px solid #222; font-size: 1.6rem; }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 991px) {
+            header { padding: 2rem 5%; }
+            nav { display: none; }
+            .home { flex-direction: column-reverse; text-align: center; gap: 4rem; padding-top: 5rem; }
+            .home-content h1 { font-size: 4rem; }
+            .home-content h3 { font-size: 2.2rem; }
+            .home-img img:first-child { width: 60vw; }
+            .image-icon { width: 55px; bottom: -5px; right: 5%; }
+            .social-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+            .heading { font-size: 3.5rem; }
+            .about-content { padding: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="slash-container"></div>
+
+    <header>
+        <a href="#" class="logo">Vedant</a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#services">Technologies</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="home" id="home">
+        <div class="home-content">
+            <h1>Hi, It's <span>Vedant Tapase</span></h1>
+            <h3 class="typing-text">I'm an <span></span></h3>
+            <p>AIML student turning ideas into smart, practical tech. Learning, building, and leveling up every day.</p>
+            
+            <div class="social-icons">
+                <a href="mailto:vedanttapase70@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/vedant-tapase-ab3239396" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://github.com/vedanttapase" target="_blank"><i class="fa-brands fa-github"></i></a>
+                <a href="https://x.com/spxoden" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/ved.rt14" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+
+            <a href="mailto:vedanttapase70@gmail.com" class="btn">Hire Me</a>
+        </div>
+
+        <div class="home-img">
+            <img src="main.jpg" alt="Vedant">
+            <img src="https://img.icons8.com/color/144/one-piece.png" class="image-icon" alt="Specialty">
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2 class="heading">About <span>Me</span></h2>
+        <div class="about-content">
+            <p>I'm <strong>Vedant Tapase</strong>, a First-Year B.Tech Computer Science Engineering (AI &amp; ML) student at Rajarambapu Institute of Technology (RIT).</p>
+            <p>I enjoy building AI, automation, IoT, and web development projects.</p>
+            <p>I primarily learn by building real-world projects with AI-assisted development, testing, debugging, and continuous improvement.</p>
+        </div>
+    </section>
+
+    <section class="education" id="education">
+        <h2 class="heading">My <span>Education</span></h2>
+        <div class="education-card">
+            <h3>B.Tech in Computer Science (AIML)</h3>
+            <p>FY B.Tech (CSE AIML Course) - 2025-2026</p>
+            <p style="margin-top: 10px; color: var(--main-color);">Focused on AI & Machine Learning integration.</p>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="heading">Technologies <span>I've Used</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class="fa-solid fa-code"></i>
+                <h3>Programming</h3>
+                <div class="tech-tags">
+                    <span>Python</span>
+                    <span>JavaScript</span>
+                    <span>C</span>
+                    <span>HTML</span>
+                    <span>CSS</span>
+                </div>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-robot"></i>
+                <h3>AI &amp; Automation</h3>
+                <div class="tech-tags">
+                    <span>Generative AI</span>
+                    <span>Prompt Engineering</span>
+                    <span>n8n</span>
+                    <span>AI Chatbots</span>
+                    <span>Computer Vision</span>
+                    <span>Voice AI</span>
+                </div>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-server"></i>
+                <h3>Web Development</h3>
+                <div class="tech-tags">
+                    <span>Node.js</span>
+                    <span>Express.js</span>
+                    <span>SQLite</span>
+                </div>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>IoT</h3>
+                <div class="tech-tags">
+                    <span>ESP8266 (NodeMCU)</span>
+                    <span>Arduino IDE</span>
+                    <span>Blynk</span>
+                    <span>IR Sensors</span>
+                </div>
+            </div>
+            <div class="services-box">
+                <i class="fa-solid fa-toolbox"></i>
+                <h3>Tools</h3>
+                <div class="tech-tags">
+                    <span>VS Code</span>
+                    <span>Git</span>
+                    <span>GitHub</span>
+                    <span>Figma</span>
+                    <span>ChatGPT</span>
+                    <span>Claude</span>
+                    <span>Gemini</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects" id="projects">
+        <h2 class="heading">My <span>Projects</span></h2>
+        <div class="projects-container">
+
+            <div class="project-card">
+                <span class="project-category">IoT</span>
+                <h3>Library Seat Availability System</h3>
+                <p class="project-desc">Built an IoT-based system using ESP8266, IR sensors, and Blynk to monitor library seat occupancy in real time. The system supports seat booking, live availability updates, and automatic booking cancellation.</p>
+                <div class="project-tech">
+                    <span>ESP8266</span>
+                    <span>Arduino IDE</span>
+                    <span>Blynk</span>
+                    <span>IR Sensors</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-category">Full Stack</span>
+                <h3>Lost &amp; Found Website</h3>
+                <p class="project-desc">A web application that allows users to report and search lost and found items using Node.js, Express, SQLite, HTML, CSS, and JavaScript.</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                    <span>Node.js</span>
+                    <span>Express.js</span>
+                    <span>SQLite</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-category">Artificial Intelligence</span>
+                <h3>B &ndash; AI Desktop Assistant</h3>
+                <p class="project-desc">A Jarvis-inspired desktop assistant that performs computer tasks using voice commands, AI interaction, and desktop automation.</p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Gemini API</span>
+                    <span>Speech Recognition</span>
+                    <span>Text-to-Speech</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-category">Computer Vision</span>
+                <h3>Insurance Damage Detection AI</h3>
+                <p class="project-desc">An AI-powered system that analyzes uploaded product images to detect damage and demonstrate AI-assisted insurance claim verification.</p>
+                <div class="project-tech">
+                    <span>Python</span>
+                    <span>Computer Vision</span>
+                    <span>Artificial Intelligence</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-category">Automation</span>
+                <h3>B-14 AI Chatbot Workflow</h3>
+                <p class="project-desc">An AI chatbot workflow created with n8n that automates conversations and integrates AI with external services using workflow automation.</p>
+                <div class="project-tech">
+                    <span>n8n</span>
+                    <span>AI</span>
+                    <span>APIs</span>
+                    <span>Automation</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <span class="project-category">Frontend Development</span>
+                <h3>Personal Portfolio Website</h3>
+                <p class="project-desc">A responsive personal portfolio showcasing my projects, skills, and learning journey with modern UI and interactive design.</p>
+                <div class="project-tech">
+                    <span>HTML</span>
+                    <span>CSS</span>
+                    <span>JavaScript</span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="heading">Get In <span>Touch</span></h2>
+        <div class="contact-container">
+            <p class="contact-intro">Feel free to reach out for collaborations, opportunities, or just to say hi.</p>
+            <div class="contact-links">
+                <a href="mailto:vedanttapase70@gmail.com" class="contact-card">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">vedanttapase70@gmail.com</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/vedant-tapase-ab3239396" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-linkedin"></i>
+                    <div>
+                        <div class="contact-label">LinkedIn</div>
+                        <div class="contact-value">vedant-tapase</div>
+                    </div>
+                </a>
+                <a href="https://github.com/vedanttapase" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-github"></i>
+                    <div>
+                        <div class="contact-label">GitHub</div>
+                        <div class="contact-value">vedanttapase</div>
+                    </div>
+                </a>
+                <a href="https://x.com/spxoden" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-x-twitter"></i>
+                    <div>
+                        <div class="contact-label">X (Twitter)</div>
+                        <div class="contact-value">@spxoden</div>
+                    </div>
+                </a>
+                <a href="https://www.instagram.com/ved.rt14" target="_blank" class="contact-card">
+                    <i class="fa-brands fa-instagram"></i>
+                    <div>
+                        <div class="contact-label">Instagram</div>
+                        <div class="contact-value">@ved.rt14</div>
+                    </div>
+                </a>
+            </div>
+            <a href="mailto:vedanttapase70@gmail.com" class="btn" style="margin-top: 4rem;">Hire Me</a>
+        </div>
+    </section>
+
+    <footer>
+        <p style="font-size: 1.8rem;">Contact: <span style="color: var(--main-color);">vedanttapase70@gmail.com</span></p>
+        <p style="margin-top: 1rem;">Copyright &copy; 2026 by Vedant | All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
