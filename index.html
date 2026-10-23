@@ -143,6 +143,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 .ritual-emblem svg,.ritual-sigil,.ritual-mini-sigil svg{width:100%;height:100%;overflow:visible;stroke:#f4f2ef;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px #f4f2ef33)}
 .ritual-emblem-intro{animation:sigilFloat 7s ease-in-out infinite}
 .ritual-emblem-intro svg{animation:sigilTurn 26s linear infinite}
+/* Keep each sigil in its intended reference colour: emblem white, energy sigils crimson. */
+.ritual-emblem-intro svg{stroke:#f4f2ef!important;filter:drop-shadow(0 0 8px #f4f2ef44)!important}
+.ritual-sigil,.ritual-mini-sigil svg{stroke:#e10b18!important;filter:drop-shadow(0 0 8px #e10b1855)!important}
+.ritual-sigil{animation:sigilPulse 4s ease-in-out infinite,sigilTurn 45s linear infinite}
+.ritual-mini-sigil svg{animation:sigilTurn 28s linear infinite}
+
 .ritual-feature{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,90px);align-items:center;min-height:500px;padding:30px 0 90px;border-top:1px solid #2b1517;border-bottom:1px solid #2b1517}
 .ritual-copy{position:relative;z-index:2}
 .ritual-index,.ritual-art-label,.ritual-step-top{font:9px "DM Mono",monospace;letter-spacing:.13em;color:#b8a4a4}
