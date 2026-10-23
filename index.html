@@ -1,371 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <title>Vedant Tapase | Portfolio</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
-
-        * { margin: 0; padding: 0; box-sizing: border-box; text-decoration: none; border: none; outline: none; font-family: 'Poppins', sans-serif; }
-        :root { --bg-color: #080808; --second-bg-color: #131313; --main-color: #b74b4b; --white: #ffffff; }
-        html { font-size: 62.5%; scroll-behavior: smooth; }
-        body { background: var(--bg-color); color: var(--white); overflow-x: hidden; }
-
-        /* --- ENTRANCE ANIMATION --- */
-        .slash-container { position: fixed; top: 50%; left: 0; width: 100%; height: 4px; background: var(--main-color); z-index: 10000; box-shadow: 0 0 20px var(--main-color); animation: slashMove 1.5s ease-out forwards; }
-        @keyframes slashMove { 0% { width: 0; opacity: 1; } 70% { width: 100%; opacity: 1; height: 4px; } 100% { width: 100%; opacity: 0; height: 0; } }
-
-        /* --- HEADER --- */
-        header { position: fixed; top: 0; left: 0; width: 100%; padding: 2.5rem 10%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
-        .logo { font-size: 3rem; color: var(--main-color); font-weight: 800; }
-        nav a { font-size: 1.8rem; color: var(--white); margin-left: 3.5rem; transition: 0.3s; }
-        nav a:hover { color: var(--main-color); }
-
-        /* --- SECTIONS --- */
-        section { min-height: 100vh; padding: 10rem 10% 2rem; }
-        .heading { text-align: center; font-size: 4.5rem; margin-bottom: 5rem; }
-        .heading span { color: var(--main-color); }
-
-        /* --- HOME --- */
-        .home { display: flex; justify-content: center; align-items: center; gap: 8rem; animation: fadeIn 2s ease-in; }
-        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
-        .home-content h1 { font-size: 6.5rem; font-weight: 700; line-height: 1.1; }
-        .home-content h3 { font-size: 3.5rem; margin: 1.5rem 0; font-weight: 600; }
-        .home-content span { color: var(--main-color); }
-        .home-content p { font-size: 1.6rem; line-height: 1.8; margin-bottom: 3rem; color: #ccc; }
-
-        /* --- IMAGES --- */
-        .home-img { position: relative; animation: float 4s ease-in-out infinite; }
-        .home-img img:first-child { width: 30vw; border-radius: 50%; border: 4px solid var(--main-color); box-shadow: 0 0 25px var(--main-color); }
-        .image-icon { position: absolute; bottom: -10px; right: -10px; width: 80px; filter: drop-shadow(0 0 10px var(--main-color)); z-index: 100; }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
-
-        /* --- SOCIALS --- */
-        .social-icons { margin-bottom: 4rem; }
-        .social-icons a { display: inline-flex; justify-content: center; align-items: center; width: 4.5rem; height: 4.5rem; border: 0.2rem solid var(--main-color); font-size: 2.2rem; border-radius: 50%; color: var(--main-color); margin-right: 1.5rem; transition: 0.3s; }
-        .social-icons a:hover { background: var(--main-color); color: black; transform: translateY(-5px); box-shadow: 0 0 20px var(--main-color); }
-
-        /* --- ABOUT --- */
-        .about-content { max-width: 900px; margin: 0 auto; background: #1a1a1a; padding: 4rem; border-radius: 2rem; border-left: 5px solid var(--main-color); }
-        .about-content p { font-size: 1.7rem; line-height: 1.9; color: #ccc; margin-bottom: 1.8rem; }
-        .about-content p:last-child { margin-bottom: 0; }
-        .about-content strong { color: var(--main-color); }
-
-        /* --- EDUCATION --- */
-        .education { background-color: var(--second-bg-color); }
-        .education-card { background: #1a1a1a; padding: 3rem; border-radius: 2rem; border-left: 5px solid var(--main-color); max-width: 800px; margin: 0 auto; }
-        .education-card h3 { font-size: 2.4rem; margin-bottom: 1rem; }
-        .education-card p { font-size: 1.8rem; color: #ccc; }
-
-        /* --- SERVICES / TECHNOLOGIES --- */
-        .services-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2.5rem; }
-        .services-box { background: var(--second-bg-color); padding: 3rem 2rem; border-radius: 2rem; text-align: center; transition: 0.4s; border: 1px solid transparent; }
-        .services-box:hover { border: 1px solid var(--main-color); transform: scale(1.02); }
-        .services-box i { font-size: 7rem; color: var(--main-color); }
-        .services-box h3 { font-size: 2.2rem; margin: 1.5rem 0 1.2rem; }
-        .services-box p { font-size: 1.5rem; color: #ccc; line-height: 1.7; }
-        .tech-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.8rem; margin-top: 1.8rem; }
-        .tech-tags span { font-size: 1.3rem; padding: 0.6rem 1.4rem; border: 1px solid var(--main-color); border-radius: 3rem; color: var(--white); background: rgba(183, 75, 75, 0.08); transition: 0.3s; }
-        .tech-tags span:hover { background: var(--main-color); color: black; }
-
-        /* --- PROJECTS --- */
-        .projects { background-color: var(--second-bg-color); }
-        .projects-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2.5rem; }
-        .project-card { background: #1a1a1a; border-radius: 2rem; padding: 2.8rem; border: 1px solid transparent; transition: 0.4s; display: flex; flex-direction: column; }
-        .project-card:hover { border-color: var(--main-color); transform: translateY(-6px); box-shadow: 0 10px 25px rgba(183, 75, 75, 0.2); }
-        .project-category { display: inline-block; align-self: flex-start; font-size: 1.2rem; letter-spacing: 0.1rem; text-transform: uppercase; color: var(--main-color); border: 1px solid var(--main-color); padding: 0.4rem 1.2rem; border-radius: 3rem; margin-bottom: 1.5rem; }
-        .project-card h3 { font-size: 2.2rem; margin-bottom: 1.2rem; }
-        .project-card p.project-desc { font-size: 1.5rem; color: #ccc; line-height: 1.8; margin-bottom: 1.8rem; flex-grow: 1; }
-        .project-tech { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 2.2rem; }
-        .project-tech span { font-size: 1.2rem; padding: 0.5rem 1.2rem; border-radius: 3rem; background: rgba(183, 75, 75, 0.1); color: var(--main-color); }
-        .project-buttons { display: flex; flex-wrap: wrap; gap: 1.2rem; }
-        .project-buttons a { font-size: 1.4rem; padding: 0.9rem 1.8rem; border-radius: 3rem; border: 1px solid var(--main-color); color: var(--white); transition: 0.3s; display: inline-flex; align-items: center; gap: 0.6rem; }
-        .project-buttons a:hover { background: var(--main-color); color: black; }
-        .project-buttons a.filled { background: var(--main-color); color: black; }
-        .project-buttons a.filled:hover { background: transparent; color: var(--white); }
-
-        /* --- CONTACT --- */
-        .contact { background-color: var(--bg-color); }
-        .contact-container { max-width: 900px; margin: 0 auto; text-align: center; }
-        .contact-intro { font-size: 1.7rem; color: #ccc; margin-bottom: 4rem; line-height: 1.8; }
-        .contact-links { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; }
-        .contact-card { display: flex; align-items: center; gap: 1.6rem; background: #1a1a1a; padding: 2rem 2.2rem; border-radius: 1.5rem; border: 1px solid transparent; transition: 0.3s; text-align: left; }
-        .contact-card:hover { border-color: var(--main-color); transform: translateY(-4px); box-shadow: 0 8px 20px rgba(183, 75, 75, 0.2); }
-        .contact-card i { font-size: 2.8rem; color: var(--main-color); flex-shrink: 0; width: 4rem; text-align: center; }
-        .contact-card .contact-label { font-size: 1.3rem; color: #999; margin-bottom: 0.3rem; }
-        .contact-card .contact-value { font-size: 1.6rem; color: var(--white); word-break: break-word; }
-
-        /* --- TYPING ANIMATION --- */
-        .typing-text span::before { content: ""; color: var(--main-color); animation: words 10s infinite; }
-        @keyframes words { 0%, 50% { content: "AIML Engineer"; } 51%, 100% { content: "AI Specialist"; } }
-
-        .btn { display: inline-block; padding: 1.3rem 3.2rem; background: var(--main-color); border-radius: 4rem; font-size: 1.7rem; color: black; font-weight: 600; transition: 0.3s; box-shadow: 0 0 15px var(--main-color); }
-
-        footer { text-align: center; padding: 3rem; background: var(--bg-color); border-top: 1px solid #222; font-size: 1.6rem; }
-
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 991px) {
-            header { padding: 2rem 5%; }
-            nav { display: none; }
-            .home { flex-direction: column-reverse; text-align: center; gap: 4rem; padding-top: 5rem; }
-            .home-content h1 { font-size: 4rem; }
-            .home-content h3 { font-size: 2.2rem; }
-            .home-img img:first-child { width: 60vw; }
-            .image-icon { width: 55px; bottom: -5px; right: 5%; }
-            .social-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
-            .heading { font-size: 3.5rem; }
-            .about-content { padding: 2.5rem; }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b0b0c">
+<meta name="description" content="Vedant Tapase — developer building AI, web, and technology projects.">
+<title>Vedant Tapase — Developer Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0c;--panel:#111214;--text:#f3f3f0;--muted:#a0a1a5;--line:#292a2d;--accent:#c8f169;--display:'Barlow Condensed',Impact,sans-serif;--body:'Inter',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--bg);color:var(--text);font-family:var(--body);overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}::selection{background:var(--accent);color:#0b0b0c}
+#intro{position:fixed;inset:0;background:#0b0b0c;z-index:1000;display:grid;place-items:center;overflow:hidden;transition:opacity .65s ease,visibility .65s ease}#intro.done{opacity:0;visibility:hidden;pointer-events:none}#particleCanvas{position:absolute;inset:0;width:100%;height:100%}.intro-word{position:relative;margin:0;width:100%;padding:0 2vw;text-align:center;font:900 clamp(4rem,18vw,17rem)/.8 var(--display);letter-spacing:-.025em;color:#d9dadd;background:linear-gradient(180deg,#fff 0%,#a8abb0 45%,#f4f4f5 52%,#777b81 100%);background-clip:text;-webkit-background-clip:text;-webkit-text-fill-color:transparent;opacity:0;pointer-events:none}.intro-word.ready{opacity:1}.intro-word span{display:block;white-space:nowrap}
+header{position:fixed;z-index:100;top:0;left:0;width:100%;display:flex;justify-content:space-between;align-items:center;padding:24px clamp(22px,6vw,90px);background:rgba(11,11,12,.8);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:opacity .6s,transform .6s,border-color .3s}header.hidden-intro{opacity:0;transform:translateY(-15px)}header.scrolled{border-color:var(--line)}.brand{font-size:15px;font-weight:700;letter-spacing:-.04em}.brand span{color:var(--accent)}nav{display:flex;gap:clamp(16px,3vw,38px);align-items:center}nav a{font-size:12px;color:#c1c1c4;transition:color .2s}nav a:hover{color:var(--accent)}.nav-contact{padding:10px 15px;border:1px solid #666;border-radius:2px;color:var(--text)}.nav-contact:hover{border-color:var(--accent)}
+main{opacity:0;transition:opacity .7s ease}main.visible{opacity:1}.hero{min-height:100svh;padding:150px clamp(22px,8vw,120px) 80px;display:flex;flex-direction:column;justify-content:center;position:relative}.eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:12px}.eyebrow:before{content:"";width:28px;height:1px;background:var(--accent)}.hero-title{font:900 clamp(4.4rem,13.8vw,13.5rem)/.78 var(--display);letter-spacing:-.045em;margin:32px 0 22px;max-width:1200px}.hero-title .outline{color:transparent;-webkit-text-stroke:1px #777a7f}.hero-meta{display:flex;align-items:flex-start;justify-content:space-between;gap:35px;max-width:1000px}.role{font-size:clamp(16px,2vw,22px);font-weight:500;margin:0 0 13px}.intro-line{font-size:14px;line-height:1.9;color:var(--muted);max-width:520px;margin:0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}.button{display:inline-flex;align-items:center;gap:18px;padding:14px 18px;border:1px solid #55575b;font-size:12px;transition:background .2s,color .2s,border-color .2s}.button.primary{background:var(--accent);border-color:var(--accent);color:#10110d;font-weight:700}.button:hover{border-color:var(--accent);background:var(--accent);color:#10110d}.hero-photo{position:absolute;right:clamp(22px,8vw,120px);bottom:65px;width:clamp(125px,17vw,230px);height:clamp(160px,22vw,290px);object-fit:cover;object-position:center 25%;filter:grayscale(100%);opacity:.65;border:1px solid #45464a}.scroll-note{position:absolute;bottom:32px;left:clamp(22px,8vw,120px);font-size:10px;color:#777;letter-spacing:.15em;text-transform:uppercase}
+section.content-section{padding:110px clamp(22px,8vw,120px)}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:42px;border-bottom:1px solid var(--line);padding-bottom:20px}.section-kicker{font-size:10px;letter-spacing:.2em;color:var(--accent);text-transform:uppercase}.section-title{font:800 clamp(3rem,7vw,6rem)/.9 var(--display);letter-spacing:-.025em;margin:10px 0 0}.section-note{font-size:12px;color:var(--muted);max-width:260px;line-height:1.7}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px}.about-copy{font-size:clamp(18px,2.4vw,27px);line-height:1.6;letter-spacing:-.03em;max-width:720px;margin:0}.about-copy strong{color:var(--accent);font-weight:500}.facts{display:grid;grid-template-columns:1fr 1fr;gap:24px}.fact{border-top:1px solid var(--line);padding-top:15px}.fact-label{font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--muted)}.fact-value{font-size:14px;line-height:1.6;margin-top:9px}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:32px}.skills span,.tag{border:1px solid #3a3b3e;color:#d4d4d5;padding:8px 10px;font-size:10px;letter-spacing:.03em}
+#projects{background:#0e0f10}.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.project-card{display:flex;flex-direction:column;text-align:left;padding:0;background:transparent;color:inherit;border:1px solid var(--line);cursor:pointer;min-width:0;transition:border-color .25s,transform .25s}.project-card:hover{border-color:#777;transform:translateY(-4px)}.project-art{height:190px;position:relative;overflow:hidden;background:#17191b;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}.project-art:before,.modal-art:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 48%,rgba(255,255,255,.055) 49%,transparent 50%);background-size:18px 18px;opacity:.65}.art-mark{position:relative;font:900 clamp(2.7rem,6vw,5rem)/.8 var(--display);letter-spacing:-.04em;color:#d9dcdd;text-align:center}.art-mark small{display:block;font:500 9px var(--body);letter-spacing:.24em;color:var(--accent);margin-top:15px}.art-1{background:#1b2119}.art-2{background:#171b23}.art-3{background:#211a17}.art-4{background:#1b1a23}.art-5{background:#1c2020}.art-6{background:#202018}.project-info{padding:21px;display:flex;flex-direction:column;flex:1}.project-index{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}.project-index span:last-child{color:var(--accent)}.project-info h3{font-size:18px;letter-spacing:-.04em;font-weight:600;margin:22px 0 10px}.project-info p{font-size:12px;line-height:1.8;color:var(--muted);margin:0 0 20px;flex:1}.project-bottom{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:15px;font-size:11px;color:#ccc}.arrow{font-size:18px;color:var(--accent)}
+.contact-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:end}.contact-title{font:900 clamp(4rem,11vw,10rem)/.8 var(--display);letter-spacing:-.04em;margin:0 0 25px}.contact-title span{color:var(--accent)}.contact-copy{color:var(--muted);font-size:14px;line-height:1.8;max-width:440px}.contact-details{border-top:1px solid var(--line)}.contact-row{display:flex;justify-content:space-between;gap:15px;padding:17px 0;border-bottom:1px solid var(--line);font-size:12px}.contact-row span:first-child{color:var(--muted)}.contact-row a:hover{color:var(--accent)}footer{display:flex;justify-content:space-between;gap:20px;padding:22px clamp(22px,8vw,120px);border-top:1px solid var(--line);font-size:10px;color:#777}
+#projectModal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.78);display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(10px)}#projectModal.open{display:flex}.modal-panel{position:relative;width:min(760px,100%);max-height:90vh;overflow:auto;background:#101113;border:1px solid #444;padding:clamp(22px,4vw,42px)}.modal-close{position:absolute;right:16px;top:12px;background:none;color:white;font-size:30px;cursor:pointer;line-height:1}.modal-art{height:180px;position:relative;background:#1b2119;display:flex;align-items:center;justify-content:center;margin-bottom:25px;overflow:hidden}.modal-panel h2{font:800 clamp(2.5rem,6vw,4.5rem)/.9 var(--display);margin:0 40px 14px 0}.modal-panel p{font-size:13px;line-height:1.9;color:#b5b5b8}.modal-tags{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 26px}.modal-link{display:inline-flex;padding:12px 16px;background:var(--accent);color:#10110d;font-size:12px;font-weight:700}
+@media(max-width:850px){.hero-meta{max-width:72%}.hero-photo{opacity:.32}.about-grid,.contact-layout{grid-template-columns:1fr;gap:38px}.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-art{height:160px}.section-head{align-items:flex-start;flex-direction:column}.section-note{max-width:420px}}
+@media(max-width:560px){header{padding:18px 20px}.brand{font-size:13px}nav{gap:12px}nav a{font-size:10px}nav a:nth-child(1){display:none}.nav-contact{padding:8px 9px}.hero{padding-top:125px;min-height:90svh}.hero-title{font-size:clamp(4rem,19vw,7.5rem);margin:26px 0 20px}.hero-meta{max-width:100%;display:block}.intro-line{max-width:85%}.hero-photo{right:18px;bottom:78px;width:105px;height:145px;opacity:.2}.scroll-note{bottom:25px}.hero-actions{margin-top:24px}section.content-section{padding:78px 20px}.project-grid{grid-template-columns:1fr}.project-art{height:180px}.project-info{padding:19px}.facts{gap:17px}.contact-title{font-size:clamp(4rem,17vw,6.8rem)}footer{padding:20px;flex-direction:column}.intro-word{font-size:19vw}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}#intro{display:none!important}main{opacity:1!important}header.hidden-intro{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-
-    <div class="slash-container"></div>
-
-    <header>
-        <a href="#" class="logo">Vedant</a>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#services">Technologies</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="home" id="home">
-        <div class="home-content">
-            <h1>Hi, It's <span>Vedant Tapase</span></h1>
-            <h3 class="typing-text">I'm an <span></span></h3>
-            <p>AIML student turning ideas into smart, practical tech. Learning, building, and leveling up every day.</p>
-            
-            <div class="social-icons">
-                <a href="mailto:vedanttapase70@gmail.com"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/vedant-tapase-ab3239396" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="https://github.com/vedanttapase" target="_blank"><i class="fa-brands fa-github"></i></a>
-                <a href="https://x.com/spxoden" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/ved.rt14" target="_blank"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-
-            <a href="mailto:vedanttapase70@gmail.com" class="btn">Let's Talk</a>
-        </div>
-
-        <div class="home-img">
-            <img src="main.jpg" alt="Vedant">
-          
-        </div>
-    </section>
-
-    <section class="about" id="about">
-        <h2 class="heading">About <span>Me</span></h2>
-        <div class="about-content">
-            <p>I'm <strong>Vedant Tapase</strong>, a First-Year B.Tech Computer Science Engineering (AI &amp; ML) student at Rajarambapu Institute of Technology (RIT).</p>
-            <p>I enjoy building AI, automation, IoT, and web development projects.</p>
-            <p>I primarily learn by building real-world projects with AI-assisted development, testing, debugging, and continuous improvement.</p>
-        </div>
-    </section>
-
-    <section class="education" id="education">
-        <h2 class="heading">My <span>Education</span></h2>
-        <div class="education-card">
-            <h3>B.Tech in Computer Science (AIML)</h3>
-            <p>FY B.Tech (CSE AIML Course) - 2025-2026</p>
-            <p style="margin-top: 10px; color: var(--main-color);">Focused on AI & Machine Learning integration.</p>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <h2 class="heading">Technologies <span>I've Used</span></h2>
-        <div class="services-container">
-            <div class="services-box">
-                <i class="fa-solid fa-code"></i>
-                <h3>Programming</h3>
-                <div class="tech-tags">
-                    <span>Python</span>
-                    <span>JavaScript</span>
-                    <span>C</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
-                </div>
-            </div>
-            <div class="services-box">
-                <i class="fa-solid fa-robot"></i>
-                <h3>AI &amp; Automation</h3>
-                <div class="tech-tags">
-                    <span>Generative AI</span>
-                    <span>Prompt Engineering</span>
-                    <span>n8n</span>
-                    <span>AI Chatbots</span>
-                    <span>Computer Vision</span>
-                    <span>Voice AI</span>
-                </div>
-            </div>
-            <div class="services-box">
-                <i class="fa-solid fa-server"></i>
-                <h3>Web Development</h3>
-                <div class="tech-tags">
-                    <span>Node.js</span>
-                    <span>Express.js</span>
-                    <span>SQLite</span>
-                </div>
-            </div>
-            <div class="services-box">
-                <i class="fa-solid fa-microchip"></i>
-                <h3>IoT</h3>
-                <div class="tech-tags">
-                    <span>ESP8266 (NodeMCU)</span>
-                    <span>Arduino IDE</span>
-                    <span>Blynk</span>
-                    <span>IR Sensors</span>
-                </div>
-            </div>
-            <div class="services-box">
-                <i class="fa-solid fa-toolbox"></i>
-                <h3>Tools</h3>
-                <div class="tech-tags">
-                    <span>VS Code</span>
-                    <span>Git</span>
-                    <span>GitHub</span>
-                    <span>Figma</span>
-                    <span>ChatGPT</span>
-                    <span>Claude</span>
-                    <span>Gemini</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="projects" id="projects">
-        <h2 class="heading">My <span>Projects</span></h2>
-        <div class="projects-container">
-
-            <div class="project-card">
-                <span class="project-category">IoT</span>
-                <h3>Library Seat Availability System</h3>
-                <p class="project-desc">Built an IoT-based system using ESP8266, IR sensors, and Blynk to monitor library seat occupancy in real time. The system supports seat booking, live availability updates, and automatic booking cancellation.</p>
-                <div class="project-tech">
-                    <span>ESP8266</span>
-                    <span>Arduino IDE</span>
-                    <span>Blynk</span>
-                    <span>IR Sensors</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-category">Full Stack</span>
-                <h3>Lost &amp; Found Website</h3>
-                <p class="project-desc">A web application that allows users to report and search lost and found items using Node.js, Express, SQLite, HTML, CSS, and JavaScript.</p>
-                <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                    <span>Node.js</span>
-                    <span>Express.js</span>
-                    <span>SQLite</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-category">Artificial Intelligence</span>
-                <h3>B &ndash; AI Desktop Assistant</h3>
-                <p class="project-desc">A Jarvis-inspired desktop assistant that performs computer tasks using voice commands, AI interaction, and desktop automation.</p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Gemini API</span>
-                    <span>Speech Recognition</span>
-                    <span>Text-to-Speech</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-category">Computer Vision</span>
-                <h3>Insurance Damage Detection AI</h3>
-                <p class="project-desc">An AI-powered system that analyzes uploaded product images to detect damage and demonstrate AI-assisted insurance claim verification.</p>
-                <div class="project-tech">
-                    <span>Python</span>
-                    <span>Computer Vision</span>
-                    <span>Artificial Intelligence</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-category">Automation</span>
-                <h3>B-14 AI Chatbot Workflow</h3>
-                <p class="project-desc">An AI chatbot workflow created with n8n that automates conversations and integrates AI with external services using workflow automation.</p>
-                <div class="project-tech">
-                    <span>n8n</span>
-                    <span>AI</span>
-                    <span>APIs</span>
-                    <span>Automation</span>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <span class="project-category">Frontend Development</span>
-                <h3>Personal Portfolio Website</h3>
-                <p class="project-desc">A responsive personal portfolio showcasing my projects, skills, and learning journey with modern UI and interactive design.</p>
-                <div class="project-tech">
-                    <span>HTML</span>
-                    <span>CSS</span>
-                    <span>JavaScript</span>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <h2 class="heading">Get In <span>Touch</span></h2>
-        <div class="contact-container">
-            <p class="contact-intro">Feel free to reach out for collaborations, opportunities, or just to say hi.</p>
-            <div class="contact-links">
-                <a href="mailto:vedanttapase70@gmail.com" class="contact-card">
-                    <i class="fa-solid fa-envelope"></i>
-                    <div>
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">vedanttapase70@gmail.com</div>
-                    </div>
-                </a>
-                <a href="https://www.linkedin.com/in/vedant-tapase-ab3239396" target="_blank" class="contact-card">
-                    <i class="fa-brands fa-linkedin"></i>
-                    <div>
-                        <div class="contact-label">LinkedIn</div>
-                        <div class="contact-value">vedant-tapase</div>
-                    </div>
-                </a>
-                <a href="https://github.com/vedanttapase" target="_blank" class="contact-card">
-                    <i class="fa-brands fa-github"></i>
-                    <div>
-                        <div class="contact-label">GitHub</div>
-                        <div class="contact-value">vedanttapase</div>
-                    </div>
-                </a>
-                <a href="https://x.com/spxoden" target="_blank" class="contact-card">
-                    <i class="fa-brands fa-x-twitter"></i>
-                    <div>
-                        <div class="contact-label">X (Twitter)</div>
-                        <div class="contact-value">@spxoden</div>
-                    </div>
-                </a>
-                <a href="https://www.instagram.com/ved.rt14" target="_blank" class="contact-card">
-                    <i class="fa-brands fa-instagram"></i>
-                    <div>
-                        <div class="contact-label">Instagram</div>
-                        <div class="contact-value">@ved.rt14</div>
-                    </div>
-                </a>
-            </div>
-            <a href="mailto:vedanttapase70@gmail.com" class="btn" style="margin-top: 4rem;">Let's Talk</a>
-        </div>
-    </section>
-
-    <footer>
-        <p style="font-size: 1.8rem;">Contact: <span style="color: var(--main-color);">vedanttapase70@gmail.com</span></p>
-        <p style="margin-top: 1rem;">Copyright &copy; 2026 by Vedant | All Rights Reserved.</p>
-    </footer>
-
+<div id="intro" aria-hidden="true"><canvas id="particleCanvas"></canvas><h1 class="intro-word" id="introWord"><span>PORTFOLIO</span></h1></div>
+<header id="siteHeader" class="hidden-intro"><a class="brand" href="#home">VEDANT<span>.</span> TAPASE</a><nav aria-label="Main navigation"><a href="#about">About</a><a href="#projects">Projects</a><a href="#contact" class="nav-contact">Contact ↗</a></nav></header>
+<main id="mainContent">
+<section class="hero" id="home">
+<div class="eyebrow">Developer · AI &amp; ML · Builder</div>
+<h1 class="hero-title">IDEAS INTO<br><span class="outline">REALITY.</span></h1>
+<div class="hero-meta"><div><h2 class="role">Computer Science (AI &amp; ML) Student / Developer</h2><p class="intro-line">I’m Vedant Tapase — a developer exploring AI, web experiences, automation, and connected technology by turning ambitious ideas into working prototypes.</p><div class="hero-actions"><a class="button primary" href="#projects">Explore projects <span>↘</span></a><a class="button" href="#contact">Get in touch <span>↗</span></a></div></div></div>
+<img class="hero-photo" src="main.jpg" alt="Vedant Tapase outdoors">
+<div class="scroll-note">Scroll to explore · 01—04</div>
+</section>
+<section class="content-section" id="about">
+<div class="section-head"><div><div class="section-kicker">01 / About</div><h2 class="section-title">Curious by nature.<br>Built to experiment.</h2></div><p class="section-note">Learning through real projects, iteration, and solving problems that matter.</p></div>
+<div class="about-grid"><div><p class="about-copy">I’m <strong>Vedant Tapase</strong>, a B.Tech Computer Science student specialising in AI &amp; Machine Learning at Rajarambapu Institute of Technology. I like working across the stack—from interfaces and APIs to AI-powered ideas and IoT prototypes.</p><div class="skills"><span>Python</span><span>JavaScript</span><span>HTML / CSS</span><span>Node.js</span><span>Express</span><span>SQLite</span><span>FastAPI</span><span>Supabase</span><span>Generative AI</span><span>ESP8266 / Arduino</span><span>Git &amp; GitHub</span></div></div><div class="facts"><div class="fact"><div class="fact-label">Currently</div><div class="fact-value">B.Tech CSE — AI &amp; ML<br>RIT, Rajaramnagar</div></div><div class="fact"><div class="fact-label">Focus</div><div class="fact-value">AI products, useful web tools, automation</div></div><div class="fact"><div class="fact-label">Approach</div><div class="fact-value">Prototype, test, debug, improve.</div></div><div class="fact"><div class="fact-label">Open to</div><div class="fact-value">Internships, collaborations, new challenges</div></div></div></div>
+</section>
+<section class="content-section" id="projects">
+<div class="section-head"><div><div class="section-kicker">02 / Selected work</div><h2 class="section-title">Projects in progress<br>and in practice.</h2></div><p class="section-note">Select any project to see more details, tools used, and its repository or project link.</p></div>
+<div class="project-grid" id="projectGrid"></div>
+</section>
+<section class="content-section" id="contact">
+<div class="section-kicker">03 / Contact</div><div class="contact-layout"><div><h2 class="contact-title">LET’S MAKE<br><span>IT REAL.</span></h2><p class="contact-copy">Have an interesting problem, a project to build, or an opportunity to discuss? Reach out. I’m always happy to connect with people who make things.</p><a class="button primary" href="mailto:vedanttapase70@gmail.com">Email me <span>↗</span></a></div><div class="contact-details"><div class="contact-row"><span>Email</span><a href="mailto:vedanttapase70@gmail.com">vedanttapase70@gmail.com ↗</a></div><div class="contact-row"><span>GitHub</span><a href="https://github.com/vedanttapase" target="_blank" rel="noreferrer">github.com/vedanttapase ↗</a></div><div class="contact-row"><span>LinkedIn</span><a href="https://www.linkedin.com/in/vedant-tapase-ab3239396" target="_blank" rel="noreferrer">Connect with me ↗</a></div><div class="contact-row"><span>Based in</span><span>India</span></div></div></div>
+</section>
+<footer><span>© 2026 Vedant Tapase</span><span>Designed with intent. Built with code.</span><a href="#home">Back to top ↑</a></footer>
+</main>
+<div id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-panel"><button class="modal-close" id="modalClose" aria-label="Close project details">×</button><div class="modal-art" id="modalArt"><div class="art-mark" id="modalMark">PROJECT<small>SELECTED WORK</small></div></div><div class="section-kicker" id="modalCategory">PROJECT</div><h2 id="modalTitle">Project title</h2><p id="modalDescription"></p><div class="modal-tags" id="modalTags"></div><a class="modal-link" id="modalLink" href="#" target="_blank" rel="noreferrer">View project ↗</a></div></div>
+<script>
+const projects = [
+ {title:"PatternGenesis",category:"Geometry · AI",short:"A geometry grammar engine for analysing, reconstructing, and generating traditional patterns and design systems.",description:"PatternGenesis explores a pipeline from an image to geometry, geometry to a reusable design grammar, and grammar back to reconstructed or newly generated patterns. The planned toolkit includes symmetry detection, contour and dot-grid analysis, a Geometry DNA representation, restoration, comparison, and SVG/JSON export. This is an evolving prototype, with a focus on making visual structure understandable and reusable.",tech:["Python","FastAPI","Computer Vision","Geometry","SVG / JSON"],link:"https://github.com/vedanttapase/patterngenesis-backend",mark:"PATTERN",art:"art-1"},
+ {title:"BGMI Tactical Maps",category:"Web · Gaming",short:"A tactical map companion for planning routes, marking locations, and preparing team strategies.",description:"A map-focused web project for BGMI players, designed around Erangel, Miramar, and Rondo. The direction includes map markers, route planning, distance measurements, saved plans, and recall-point information to help teams communicate and prepare before a match.",tech:["HTML","CSS","JavaScript","Maps UI"],link:"https://github.com/vedanttapase/BGMIMAP",mark:"TACTICAL",art:"art-2"},
+ {title:"B-14 AI Desktop Assistant",category:"AI · Automation",short:"A Jarvis-inspired desktop assistant using voice interaction and AI-assisted actions.",description:"A desktop-assistant concept that combines voice commands, speech recognition, text-to-speech, AI conversation, and selected desktop automation. The aim is to make everyday computer interactions more natural and useful.",tech:["Python","Gemini API","Speech Recognition","Text-to-Speech"],link:"https://github.com/vedanttapase",mark:"B—14 AI",art:"art-3"},
+ {title:"Library Seat Availability",category:"IoT · Embedded",short:"Monitor seat occupancy and share live library availability using sensors and a connected dashboard.",description:"An IoT prototype using an ESP8266, IR sensors, and Blynk to monitor library seats. The concept includes real-time occupancy status, a simple booking flow, and automatic cancellation if a reserved seat is not claimed within the configured window.",tech:["ESP8266","Arduino IDE","Blynk","IR Sensors"],link:"https://github.com/vedanttapase",mark:"SEAT / 01",art:"art-4"},
+ {title:"Lost & Found Web App",category:"Full stack",short:"A simple platform for reporting, browsing, and finding lost items.",description:"A web application concept that helps users post lost or found items and search available reports. The stack uses a lightweight Node.js and Express server with SQLite for data storage and a browser-based interface.",tech:["HTML","CSS","JavaScript","Node.js","Express","SQLite"],link:"https://github.com/vedanttapase",mark:"FOUND",art:"art-5"},
+ {title:"Suraksha Netra",category:"AI · Public safety concept",short:"A proposed AI-assisted public-space safety alert system for faster incident response.",description:"A concept for a privacy-conscious public-safety system that could help flag potential emergencies from camera feeds and route alerts to authorised responders for human review. It is a proposed idea, not a validated or deployed detection system; any real deployment would require rigorous testing, safeguards, privacy review, and coordination with authorities.",tech:["AI concept","Computer Vision","Alert Workflow","Human Review"],link:"https://github.com/vedanttapase",mark:"SURAKSHA",art:"art-6"}
+];
+const grid=document.getElementById('projectGrid');
+projects.forEach((p,i)=>{const card=document.createElement('button');card.type='button';card.className='project-card';card.setAttribute('aria-label','View details for '+p.title);card.innerHTML='<div class="project-art '+p.art+'"><div class="art-mark">'+p.mark+'<small>'+p.category.toUpperCase()+'</small></div></div><div class="project-info"><div class="project-index"><span>PROJECT / '+String(i+1).padStart(2,'0')+'</span><span>'+p.category+'</span></div><h3>'+p.title+'</h3><p>'+p.short+'</p><div class="project-bottom"><span>View case details</span><span class="arrow">↗</span></div></div>';card.addEventListener('click',()=>openProject(p));grid.appendChild(card)});
+const modal=document.getElementById('projectModal'),closeBtn=document.getElementById('modalClose');
+function openProject(p){document.getElementById('modalCategory').textContent=p.category;document.getElementById('modalTitle').textContent=p.title;document.getElementById('modalDescription').textContent=p.description;document.getElementById('modalMark').innerHTML=p.mark+'<small>'+p.category.toUpperCase()+'</small>';document.getElementById('modalArt').className='modal-art '+p.art;const tags=document.getElementById('modalTags');tags.replaceChildren();p.tech.forEach(t=>{const s=document.createElement('span');s.className='tag';s.textContent=t;tags.appendChild(s)});const link=document.getElementById('modalLink');link.href=p.link;link.textContent=(p.link.includes('github.com')?'View repository':'View project')+' ↗';modal.classList.add('open');document.body.style.overflow='hidden';closeBtn.focus()}
+function closeProject(){modal.classList.remove('open');document.body.style.overflow=''}
+closeBtn.addEventListener('click',closeProject);modal.addEventListener('click',e=>{if(e.target===modal)closeProject()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeProject()});
+const header=document.getElementById('siteHeader'),main=document.getElementById('mainContent'),intro=document.getElementById('intro'),canvas=document.getElementById('particleCanvas'),ctx=canvas.getContext('2d'),word=document.getElementById('introWord');
+let raf=0,particles=[],targets=[],start=0,settled=false;
+function reveal(){intro.classList.add('done');header.classList.remove('hidden-intro');main.classList.add('visible');cancelAnimationFrame(raf)}
+function initParticles(){const dpr=Math.min(window.devicePixelRatio||1,2);canvas.width=innerWidth*dpr;canvas.height=innerHeight*dpr;canvas.style.width=innerWidth+'px';canvas.style.height=innerHeight+'px';ctx.setTransform(dpr,0,0,dpr,0,0);word.classList.add('ready');const mobile=innerWidth<650;const sample=document.createElement('canvas');const sctx=sample.getContext('2d');sample.width= Math.min(innerWidth,1500);sample.height=Math.min(innerHeight,500);sctx.fillStyle='#fff';sctx.textAlign='center';sctx.textBaseline='middle';let fontSize=Math.min(innerWidth*(mobile?.19:.18),innerHeight*.36,270);sctx.font='900 '+fontSize+'px "Barlow Condensed",Impact,sans-serif';sctx.fillText('PORTFOLIO',sample.width/2,sample.height/2);const data=sctx.getImageData(0,0,sample.width,sample.height).data;targets=[];const gap=mobile?5:4;for(let y=0;y<sample.height;y+=gap){for(let x=0;x<sample.width;x+=gap){if(data[(y*sample.width+x)*4+3]>120)targets.push({x:x+(innerWidth-sample.width)/2,y:y+(innerHeight-sample.height)/2})}}const count=Math.min(targets.length,mobile?1700:4400);particles=[];for(let i=0;i<count;i++){const t=targets[Math.floor(i*targets.length/count)];particles.push({x:Math.random()*innerWidth,y:Math.random()*innerHeight,tx:t.x,ty:t.y,r:Math.random()*1.15+.35,delay:Math.random()*.32,alpha:.35+Math.random()*.65})}word.classList.remove('ready');start=performance.now();animate()}
+function animate(now){if(!start)start=now;const elapsed=(now-start)/1000;ctx.clearRect(0,0,innerWidth,innerHeight);for(const p of particles){const progress=Math.max(0,Math.min(1,(elapsed-p.delay)/1.55));const ease=1-Math.pow(1-progress,3);p.x+=(p.tx-p.x)*(.045+ease*.16);p.y+=(p.ty-p.y)*(.045+ease*.16);ctx.globalAlpha=p.alpha*(.35+ease*.65);ctx.fillStyle=elapsed>1.6?'#e4e6e8':'#fff';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()}ctx.globalAlpha=1;if(elapsed<2.15){raf=requestAnimationFrame(animate)}else{settled=true;ctx.clearRect(0,0,innerWidth,innerHeight);word.classList.add('ready');setTimeout(()=>{header.classList.remove('hidden-intro');},180);setTimeout(()=>{main.classList.add('visible');},420);setTimeout(reveal,2600)}}
+const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(reduced){intro.remove();header.classList.remove('hidden-intro');main.classList.add('visible')}else{document.fonts.ready.then(()=>{if(!settled)initParticles()});setTimeout(()=>{if(!settled&&!main.classList.contains('visible'))reveal()},4500)}
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',scrollY>20),{passive:true});
+window.addEventListener('resize',()=>{if(!reduced&&!settled&&intro.isConnected){cancelAnimationFrame(raf);initParticles()}});
+</script>
 </body>
 </html>
