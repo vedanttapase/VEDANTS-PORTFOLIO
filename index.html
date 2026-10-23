@@ -36,8 +36,9 @@ section{position:relative}.section-pad{padding:clamp(90px,13vw,180px) var(--pad)
 <style id="cinematic-upgrade">
 /* Cinematic motion pass */
 html.lenis,html.lenis body{height:auto}.lenis.lenis-smooth{scroll-behavior:auto!important}.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
-body{cursor:auto}.cursor-orb{position:fixed;z-index:999;left:0;top:0;width:13px;height:13px;border:1px solid #f1e8e8;border-radius:50%;pointer-events:none;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:width .25s,height .25s,background .25s,border-color .25s;display:none}.cursor-orb.active{width:58px;height:58px;background:#e10b18;border-color:#e10b18;mix-blend-mode:screen}.cursor-orb:after{content:"";position:absolute;inset:4px;border:1px solid #e10b18;border-radius:50%;opacity:.7}
-@media(pointer:fine){.cursor-orb{display:none}a,button{cursor:pointer}}
+body{cursor:auto}
+@media(pointer:fine){body, a,button{cursor:none!important}.cursor-orb{position:fixed;z-index:9999;left:0;top:0;width:28px;height:32px;display:block;pointer-events:none;transform:translate(-50%,-50%);opacity:.96;filter:drop-shadow(2px 1px 0 #e10b18) drop-shadow(-1px -1px 0 #263cff);transition:width .2s,height .2s,filter .2s}.cursor-orb svg{display:block;width:100%;height:100%;overflow:visible}.skull-bone{fill:url(#skullBone);stroke:#211b2b;stroke-width:1.3;stroke-linejoin:round}.skull-shadow{fill:#08060d;stroke:#e10b18;stroke-width:1.5}.skull-crack{fill:none;stroke:#8d849b;stroke-width:1.1;stroke-linecap:round}.skull-eye{fill:#08060d;stroke:#3d304b;stroke-width:1}.skull-nose{fill:#15101e;stroke:#3d304b;stroke-width:.8}.skull-jaw{fill:none;stroke:#494052;stroke-width:1.5;stroke-linecap:round}.cursor-orb.active{width:35px;height:40px;filter:drop-shadow(3px 1px 0 #e10b18) drop-shadow(-2px -1px 0 #263cff) drop-shadow(0 0 8px #e10b1855)}}
+@media(pointer:coarse){.cursor-orb{display:none!important}body,a,button{cursor:auto!important}}
 .hero{perspective:1100px}.hero-bg{will-change:transform}.portrait-wrap{will-change:transform,filter}.portrait{transform-origin:50% 30%;will-change:transform,filter}.thorn{will-change:transform}.hero-title{will-change:transform,letter-spacing}.hero-meta,.hero-bottom{will-change:transform,opacity}
 .hero:after{content:"";position:absolute;z-index:0;inset:-20%;pointer-events:none;background:radial-gradient(ellipse at var(--mx,50%) var(--my,42%),#8d09121c,transparent 30%);mix-blend-mode:screen}
 .section-pad{overflow:clip}.manifesto h2 .word,.hero-title .char{display:inline-block;will-change:transform,opacity,filter}.manifesto h2 .word{margin-right:.19em}
@@ -269,7 +270,7 @@ header{transform:translateY(0)!important}
 <section class="section-pad contact" id="contact"><div class="eyebrow reveal">06 / Have an idea?</div><h2 class="reveal delay1">Let's make<br>it <em>real.</em></h2><div class="contact-bottom reveal delay2"><a class="contact-email" href="mailto:vedanttapase70@gmail.com">vedanttapase70@gmail.com ↗</a><div class="socials"><a href="https://github.com/vedanttapase" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/vedant-tapase-ab3239396/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:vedanttapase70@gmail.com">Contact ↗</a><a href="mailto:vedanttapase70@gmail.com">Email ↗</a></div></div></section>
 <footer><span>© <span id="currentYear">2026</span> VEDANT TAPASE</span><span>BUILT WITH INTENTION <span class="red">✳</span></span><a href="#home">BACK TO TOP ↑</a></footer>
 </main>
-<div class="cursor-orb" aria-hidden="true"></div>
+<div class="cursor-orb" aria-hidden="true"><svg viewBox="0 0 64 72" role="presentation"><defs><linearGradient id="skullBone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff8f1"/><stop offset=".48" stop-color="#c9c4d4"/><stop offset="1" stop-color="#746c8c"/></linearGradient></defs><path class="skull-shadow" d="M32 4C16 4 7 17 8 31c.5 8 4 13 10 17v9c0 3 3 5 6 4l4-3h8l4 3c3 1 6-1 6-4v-9c6-4 9-10 10-18C57 16 47 4 32 4Z"/><path class="skull-bone" d="M32 6C18 6 10 17 11 30c.5 7 4 12 10 16v10h7l4-4 4 4h7V46c6-4 9-10 9-17C52 16 44 6 32 6Z"/><path class="skull-crack" d="m21 12 5 7-3 5 5 3M42 13l-4 6 3 5-3 4"/><path class="skull-eye" d="M15 29c2-6 8-9 13-5l-2 12-8 2ZM49 29c-2-6-8-9-13-5l2 12 8 2Z"/><path class="skull-nose" d="m32 35-4 7 4 3 4-3Z"/><path class="skull-jaw" d="M22 46h20M23 48v7m5-7v8m5-8v8m5-8v8m4-8v7"/></svg></div>
 <script>
 (()=> {
  const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>[...root.querySelectorAll(s)];
@@ -278,6 +279,13 @@ header{transform:translateY(0)!important}
  let start=performance.now(),ready=false;
  function counter(now){const p=reduced?100:Math.min(100,Math.round((now-start)/17));if(num)num.textContent=String(p).padStart(3,'0');if(bar)bar.style.width=p+'%';if(p<100)requestAnimationFrame(counter);else setTimeout(()=>{loader?.classList.add('done');document.body.classList.remove('lock');header?.classList.add('show');if(main)main.style.opacity='1';init();},reduced?0:650)}
  function init(){if(ready)return;ready=true;
+   const skullCursor=$('.cursor-orb');
+   if(skullCursor&&matchMedia('(pointer:fine)').matches&&!reduced){
+     let cx=innerWidth/2,cy=innerHeight/2,tx=cx,ty=cy,rafId=0;
+     addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;skullCursor.classList.toggle('active',!!e.target.closest('a,button,.project'));},{passive:true});
+     const follow=()=>{cx+=(tx-cx)*.24;cy+=(ty-cy)*.24;skullCursor.style.left=cx+'px';skullCursor.style.top=cy+'px';rafId=requestAnimationFrame(follow)};
+     follow();
+   }
    if(window.Lenis&&!reduced){const lenis=new Lenis({duration:1.18,smoothWheel:true,lerp:.085});window.__portfolioLenis=lenis;lenis.on('scroll',()=>{if(window.ScrollTrigger)window.ScrollTrigger.update()});if(window.gsap&&window.ScrollTrigger){gsap.ticker.add(t=>lenis.raf(t*1000));gsap.ticker.lagSmoothing(0)}else{const raf=t=>{lenis.raf(t);requestAnimationFrame(raf)};requestAnimationFrame(raf)}}
    if(window.gsap&&window.ScrollTrigger&&!reduced){gsap.registerPlugin(ScrollTrigger);motionTimeline()}else{ $('.reveal').forEach(el=>el.classList.add('in'));fallbackMotion()}
    anchors();heroPointer();
