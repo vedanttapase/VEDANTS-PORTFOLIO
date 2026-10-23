@@ -23,9 +23,6 @@ section{position:relative}.section-pad{padding:clamp(90px,13vw,180px) var(--pad)
 @media(min-width:900px){.hero-copy{margin-top:clamp(280px,43vh,490px)}.portrait-wrap{height:70%;width:min(43vw,500px)}}
 @media(max-width:700px){header{padding-top:18px;padding-bottom:18px}.brand{font-size:10px}nav{gap:13px}nav a{font-size:9px}.hero{min-height:720px;padding-inline:15px}.hero-meta{top:14%;left:20px;right:20px}.hero-meta span{font-size:8px}.portrait-wrap{top:13%;width:min(88vw,410px);height:51%}.thorn{top:23%;width:31vw;height:28vw}.hero-copy{margin-top:clamp(265px,43vh,390px)}.hero-title{font-size:clamp(45px,13.5vw,90px)}.hero-role{font-size:8px;letter-spacing:.15em;margin-top:20px}.hero-bottom{bottom:22px}.side-note{font-size:8px}.section-head{margin-bottom:35px}.about-grid{grid-template-columns:1fr;gap:24px}.stats{margin-top:28px}.work-intro{display:block}.work-intro p{margin-top:30px}.project{grid-template-columns:30px minmax(0,1fr) 20px;gap:12px;padding:25px 0}.project-desc{grid-column:2/3;margin-top:5px}.project-arrow{grid-column:3;grid-row:1}.process-grid{grid-template-columns:1fr 1fr}.process{padding:24px 15px 24px 0;margin-right:15px;border-bottom:1px solid var(--line)}.process:nth-child(2){border-right:0;margin:0}.process:nth-child(3){border-bottom:0}.process:nth-child(4){border:0;margin:0}.process h3{margin-top:25px}.contact-bottom{align-items:flex-start;flex-direction:column}.socials{flex-wrap:wrap}footer{font-size:8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none;filter:none}}
-/* Responsive editorial typography: keep the oversized reference-style type inside the viewport. */
-.manifesto{width:100%;max-width:1240px;overflow:clip}.manifesto h2{max-width:100%;font-size:clamp(43px,8.1vw,112px);line-height:.98;letter-spacing:-.078em;text-wrap:balance;overflow-wrap:anywhere}.manifesto h2 em{white-space:normal}.project-list{position:relative;perspective:1200px}.project{transform-style:preserve-3d;backface-visibility:hidden}.project-bg-index{position:absolute;right:7%;top:50%;transform:translateY(-50%);font-size:clamp(70px,14vw,180px);font-weight:800;letter-spacing:-.1em;color:#f4f2ef;opacity:.025;pointer-events:none}.project{isolation:isolate}.project:focus-visible{outline:1px solid var(--red);outline-offset:5px}
-@media(max-width:700px){.manifesto h2{font-size:clamp(42px,10.2vw,72px);line-height:1.02;letter-spacing:-.07em}.project-bg-index{display:none}.project-desc{overflow-wrap:anywhere}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -76,6 +73,17 @@ body{cursor:crosshair}.cursor-orb{position:fixed;z-index:999;left:0;top:0;width:
 .project-bg-index{position:absolute;right:7%;bottom:-.2em;font-size:clamp(150px,28vw,380px);font-weight:800;letter-spacing:-.1em;color:#f5e8e808;line-height:1;pointer-events:none}
 @media(max-width:700px){.project-list{height:590px;min-height:0}.project{grid-template-columns:28px minmax(0,1fr) 25px;align-content:center;gap:13px;padding:28px 20px}.project-no{grid-column:1;grid-row:1}.project>div:nth-child(2){grid-column:2;grid-row:1}.project-desc{grid-column:2;grid-row:2;margin:8px 0 0}.project-arrow{grid-column:3;grid-row:1}.project-tags{gap:5px}.project-tags span{font-size:8px}.work-progress{top:18px;right:16px}.project-list:after{top:30px;left:20px}.project h3{font-size:clamp(27px,8vw,43px);padding-top:38px}}
 @media(prefers-reduced-motion:reduce){#loader.done:after{animation:none}.project-list{height:auto;min-height:0}.project{position:relative;inset:auto;opacity:1;visibility:visible;transform:none;height:auto;min-height:260px;border-bottom:1px solid var(--line)}}
+/* FINAL OVERRIDES: placed last so earlier cinematic styles cannot override layout fixes. */
+.manifesto{width:100%;max-width:1240px;margin-inline:auto;overflow:visible}
+.manifesto h2{display:block;width:100%;max-width:100%;font-size:clamp(38px,7.2vw,104px);line-height:1.02;letter-spacing:-.065em;overflow-wrap:break-word;word-break:normal;text-wrap:pretty}
+.manifesto h2 br{display:block}
+.manifesto h2 em{font-size:1em;letter-spacing:-.02em;white-space:normal}
+.project-list{position:relative;perspective:1200px}
+.project{transform-style:preserve-3d;backface-visibility:hidden;min-width:0}
+.project-bg-index{top:50%;bottom:auto;transform:translateY(-50%);font-size:clamp(64px,11vw,140px);opacity:.035}
+.project:focus-visible{outline:1px solid var(--red);outline-offset:5px}
+@media(min-width:701px){.manifesto h2{font-size:clamp(46px,7.2vw,104px)}}
+@media(max-width:700px){.manifesto{padding-inline:0}.manifesto h2{font-size:clamp(36px,9.3vw,64px);line-height:1.06;letter-spacing:-.06em}.manifesto h2 em{font-size:1em}.project-bg-index{display:none}.project-list{height:590px;min-height:0}.project{min-width:0}.project-desc{overflow-wrap:anywhere}}
 </style></head>
 <body class="lock">
 <div id="loader" aria-label="Loading portfolio"><div class="load-inner"><div class="load-num" id="loadNum">000</div><div class="mono load-label">VEDANT TAPASE / DIGITAL PORTFOLIO</div><div class="load-track"><div class="load-bar" id="loadBar"></div></div><div class="load-hint">A LITTLE PATIENCE. A DIFFERENT EXPERIENCE.</div></div></div>
