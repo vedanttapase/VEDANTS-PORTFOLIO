@@ -131,6 +131,53 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 }
 @media(prefers-reduced-motion:reduce){.project{opacity:1!important;visibility:visible!important;transform:none!important}}
 
+
+/* Crimson editorial process — animated sigil, atmospheric light and typographic stages. */
+.ritual-section{position:relative;isolation:isolate;overflow:hidden;padding:clamp(64px,10vw,145px) var(--pad);background:#050505;color:#f4f2ef;border-top:1px solid #251010;border-bottom:1px solid #251010}
+.ritual-section:before{content:"";position:absolute;z-index:-2;inset:0;background:radial-gradient(ellipse at 77% 42%,#6f000b42 0%,#24000624 29%,transparent 63%);pointer-events:none}
+.ritual-section:after{content:"";position:absolute;z-index:-1;inset:0;opacity:.11;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E")}
+.ritual-topline,.ritual-footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font:9px "DM Mono",monospace;letter-spacing:.16em;color:#a99b9b}
+.ritual-intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(160px,.7fr);align-items:center;gap:clamp(28px,8vw,120px);padding:clamp(48px,8vw,110px) 0}
+.ritual-intro>p{max-width:920px;margin:0;color:#e10b18;font-size:clamp(20px,3.1vw,43px);line-height:1.18;letter-spacing:-.055em}
+.ritual-emblem{width:clamp(110px,17vw,220px);aspect-ratio:1;justify-self:center;display:grid;place-items:center}
+.ritual-emblem svg,.ritual-sigil,.ritual-mini-sigil svg{width:100%;height:100%;overflow:visible;stroke:#f4f2ef;stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(0 0 7px #f4f2ef33)}
+.ritual-emblem-intro{animation:sigilFloat 7s ease-in-out infinite}
+.ritual-emblem-intro svg{animation:sigilTurn 26s linear infinite}
+.ritual-feature{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,6vw,90px);align-items:center;min-height:500px;padding:30px 0 90px;border-top:1px solid #2b1517;border-bottom:1px solid #2b1517}
+.ritual-copy{position:relative;z-index:2}
+.ritual-index,.ritual-art-label,.ritual-step-top{font:9px "DM Mono",monospace;letter-spacing:.13em;color:#b8a4a4}
+.ritual-copy h2,.ritual-step h3{font-family:Ruthie,cursive;font-weight:400;color:#e10b18;line-height:.9;letter-spacing:-.025em}
+.ritual-copy h2{font-size:clamp(76px,11vw,155px);margin:38px 0 30px}
+.ritual-copy h2 span{color:#f4f2ef}
+.ritual-copy>p,.ritual-step>p{color:#d02027;font-size:clamp(15px,1.65vw,22px);line-height:1.25;letter-spacing:-.035em;max-width:540px}
+.ritual-art{position:relative;min-height:430px;display:grid;place-items:center;overflow:hidden}
+.ritual-light{position:absolute;width:45%;height:115%;top:-8%;left:48%;background:linear-gradient(180deg,transparent,#b50013 50%,#f10b23 78%,transparent);filter:blur(30px);opacity:.48;transform-origin:50% 100%;animation:ritualBeam 5s ease-in-out infinite alternate}
+.ritual-orbit{position:absolute;width:min(70%,330px);aspect-ratio:1;border:1px solid #e10b182e;border-radius:50%;animation:sigilTurn 24s linear infinite}
+.orbit-two{width:min(54%,250px);border-style:dashed;animation-direction:reverse;animation-duration:17s}
+.ritual-sigil{position:relative;width:min(48%,240px);stroke:#f4f2ef;stroke-width:1.5;animation:sigilPulse 4s ease-in-out infinite, sigilTurn 45s linear infinite;filter:drop-shadow(0 0 8px #e10b1855)}
+.ritual-art-label{position:absolute;bottom:18px;right:0;color:#a99494}
+.ritual-steps{display:grid;grid-template-columns:1fr 1fr}
+.ritual-step{position:relative;min-height:350px;padding:32px clamp(20px,4vw,55px) 35px 0;border-bottom:1px solid #2b1517;overflow:hidden}
+.ritual-step+ .ritual-step{padding-left:clamp(20px,4vw,55px);padding-right:0;border-left:1px solid #2b1517}
+.ritual-step-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ritual-cross{color:#e10b18;font-size:23px;transition:transform .4s}
+.ritual-step:hover .ritual-cross{transform:rotate(135deg)}
+.ritual-step h3{font-size:clamp(65px,8vw,112px);margin:44px 0 22px}
+.ritual-step>p{max-width:450px;font-size:clamp(15px,1.6vw,20px)}
+.ritual-wave{display:flex;align-items:center;gap:5px;height:36px;margin-top:30px;opacity:.7}
+.ritual-wave i{width:2px;height:20%;background:#e10b18;animation:waveBeat 1.3s ease-in-out infinite alternate}
+.ritual-wave i:nth-child(3n){animation-delay:-.6s}.ritual-wave i:nth-child(2n){animation-delay:-.3s}.ritual-wave i:nth-child(4n){height:85%}
+.ritual-mini-sigil{width:54px;height:54px;margin-top:30px;opacity:.85}
+.ritual-mini-sigil svg{stroke:#e10b18;stroke-width:2.8;animation:sigilTurn 28s linear infinite}
+.ritual-footer{padding-top:25px;color:#a99b9b}.ritual-footer b{color:#e10b18;font-size:15px}
+@keyframes sigilTurn{to{transform:rotate(360deg)}}
+@keyframes sigilFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes sigilPulse{0%,100%{opacity:.7;filter:drop-shadow(0 0 5px #e10b1833)}50%{opacity:1;filter:drop-shadow(0 0 22px #e10b18aa)}}
+@keyframes ritualBeam{0%{transform:translateX(-10%) scaleX(.7);opacity:.25}100%{transform:translateX(8%) scaleX(1.15);opacity:.62}}
+@keyframes waveBeat{from{height:12%}to{height:95%}}
+@media(max-width:700px){.ritual-section{padding:58px 20px}.ritual-topline{font-size:8px}.ritual-intro{grid-template-columns:1fr;gap:25px;padding:55px 0 65px}.ritual-intro>p{font-size:clamp(22px,6vw,32px)}.ritual-emblem{width:115px;justify-self:start;margin-left:8px}.ritual-feature{grid-template-columns:1fr;gap:10px;min-height:0;padding:35px 0 45px}.ritual-copy h2{font-size:clamp(82px,22vw,130px);margin:30px 0 20px}.ritual-art{min-height:300px}.ritual-sigil{width:145px}.ritual-light{left:35%;width:40%}.ritual-steps{grid-template-columns:1fr}.ritual-step,.ritual-step+.ritual-step{min-height:0;padding:28px 0 34px;border-left:0}.ritual-step h3{font-size:80px;margin:35px 0 18px}.ritual-footer{font-size:8px}}
+@media(prefers-reduced-motion:reduce){.ritual-section *,.ritual-section *:before,.ritual-section *:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.ritual-sigil,.ritual-emblem-intro svg,.ritual-mini-sigil svg{transform:none!important}}
+
 </style><noscript><style>
 #loader{display:none!important}
 body.lock{overflow:auto!important}
@@ -143,7 +190,7 @@ header{transform:translateY(0)!important}
 </head>
 <body class="lock">
 <div id="loader" aria-label="Loading portfolio"><div class="load-inner"><div class="load-num" id="loadNum">000</div><div class="mono load-label">VEDANT TAPASE / DIGITAL PORTFOLIO</div><div class="load-track"><div class="load-bar" id="loadBar"></div></div><div class="load-hint">A LITTLE PATIENCE. A DIFFERENT EXPERIENCE.</div></div></div>
-<header id="header"><a class="brand" href="#home">VEDANT<span>.</span> TAPASE</a><nav><a href="#about">About</a><a href="#education">Education</a><a href="#work">Projects</a><a href="#contact">Contact ↗</a></nav></header>
+<header id="header"><a class="brand" href="#home">VEDANT<span>.</span> TAPASE</a><nav><a href="#about">About</a><a href="#education">Education</a><a href="#approach">Approach</a><a href="#work">Projects</a><a href="#contact">Contact ↗</a></nav></header>
 <main id="main">
 <section class="hero" id="home"><div class="hero-bg"></div><div class="grain"></div><div class="hero-meta"><span>Computer Science <b class="red">·</b> AI & ML</span><span>India / 2026</span></div>
 <div class="portrait-wrap"><img class="portrait" src="main.jpg" alt="Vedant Tapase portrait"></div>
@@ -154,6 +201,42 @@ header{transform:translateY(0)!important}
 <section class="section-pad manifesto"><div class="eyebrow reveal">01 / A different mindset</div><h2 class="reveal delay1">I don't just write code.<br><em>I build possibilities.</em></h2><p class="reveal delay2">I'm Vedant Tapase, a Computer Science student focused on Artificial Intelligence and Machine Learning, creative development, and turning ambitious ideas into useful digital experiences. I enjoy exploring technology, solving practical problems, and learning by building.</p></section>
 <section class="section-pad" id="about"><div class="section-head reveal"><span class="eyebrow">02 / About me</span><span class="mono">Curiosity into creation</span></div><div class="about-grid"><div class="reveal"><h2 class="about-title">Learning fast.<br><span class="red">Building faster.</span></h2><p class="about-copy">I explore the intersection of software, AI, and design. From useful student tools to experimental AI-powered systems, I enjoy taking a problem from a rough idea to a real prototype.</p><div class="skill-row"><span class="skill">Python</span><span class="skill">C</span><span class="skill">JavaScript</span><span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">React</span><span class="skill">Next.js</span><span class="skill">Node.js</span><span class="skill">Express</span><span class="skill">FastAPI</span><span class="skill">Supabase</span><span class="skill">SQLite</span><span class="skill">Git / GitHub</span><span class="skill">AI / GenAI</span><span class="skill">Computer Vision</span><span class="skill">Arduino</span><span class="skill">ESP8266</span><span class="skill">IoT</span></div></div><div class="reveal delay2"><div class="eyebrow">Current focus</div><p class="about-copy">Building useful digital experiences with clean interfaces, thoughtful interactions, and AI where it actually adds value. Currently working on <strong style="color:#f4f2ef">Suraksha Netra</strong>, an AI-assisted public-safety concept. Always experimenting, improving, and shipping.</p><div class="stats"><div class="stat"><strong>AI<span class="red">+</span></strong><span>Machine learning</span></div><div class="stat"><strong>01</strong><span>Idea to prototype</span></div><div class="stat"><strong>∞</strong><span>Things to learn</span></div></div></div></div></section>
 <section class="section-pad" id="education"><div class="section-head reveal"><span class="eyebrow">03 / Education</span><span class="mono">Learning in progress</span></div><div class="about-grid"><div class="reveal"><h2 class="about-title">Building the<br><span class="red">foundations.</span></h2><p class="about-copy">Currently pursuing a Bachelor of Technology in Computer Science and Engineering, specializing in Artificial Intelligence and Machine Learning.</p></div><div class="reveal delay2"><div class="eyebrow">Current education</div><h3 style="font-size:clamp(25px,4vw,42px);letter-spacing:-.05em;margin:15px 0 8px">Rajarambapu Institute of Technology</h3><p class="about-copy">S.Y. B.Tech · CSE (AI & ML)<br>Division B · Rajaramnagar, Maharashtra</p><div class="skill-row"><span class="skill">Computer Science</span><span class="skill">Artificial Intelligence</span><span class="skill">Machine Learning</span></div></div></div></section>
+<section class="ritual-section" id="approach" aria-labelledby="approach-title">
+  <div class="ritual-topline"><span>05 / THE WAY I BUILD</span><span>INTENTION · TENSION · IMMERSION</span></div>
+  <div class="ritual-intro">
+    <p>Design attracts attention. Development brings it to life. I combine both to create websites that not only look exceptional but also feel fast, intuitive, and memorable.</p>
+    <div class="ritual-emblem ritual-emblem-intro" aria-hidden="true">
+      <svg viewBox="0 0 220 220" fill="none"><path d="M110 8 91 57 57 25 74 73 19 61 62 96 8 111 65 120 29 165 81 143 91 211 110 157 129 211 139 143 191 165 155 120 212 111 158 96 201 61 146 73 163 25 129 57Z"/><path d="M110 8V157M57 25 139 143M163 25 81 143M19 61 155 120M201 61 65 120M8 111 212 111M29 165 191 165M91 57 129 57M74 73 146 73M81 143 139 143"/></svg>
+    </div>
+  </div>
+  <div class="ritual-feature">
+    <div class="ritual-copy">
+      <span class="ritual-index">01 — UNDERSTAND THE WHY</span>
+      <h2 id="approach-title">Discovery<span>.</span></h2>
+      <p>Every great story begins with understanding. I explore the problem, the people, and the purpose to uncover the foundation for an experience that feels authentic and unforgettable.</p>
+    </div>
+    <div class="ritual-art" aria-hidden="true">
+      <div class="ritual-light"></div><div class="ritual-orbit orbit-one"></div><div class="ritual-orbit orbit-two"></div>
+      <svg class="ritual-sigil" viewBox="0 0 220 220" fill="none"><path d="M110 5 92 56 58 23 76 72 18 60 62 96 7 110 64 121 29 166 82 143 91 214 110 158 129 214 138 143 191 166 156 121 213 110 158 96 202 60 144 72 162 23 128 56Z"/><path d="M110 5V158M58 23 138 143M162 23 82 143M18 60 156 121M202 60 64 121M7 110H213M29 166 191 166M92 56H128M76 72H144M82 143H138"/></svg>
+      <span class="ritual-art-label">SIGNAL 01 / CLARITY</span>
+    </div>
+  </div>
+  <div class="ritual-steps">
+    <article class="ritual-step">
+      <div class="ritual-step-top"><span>02 / SHAPE THE IDEA</span><span class="ritual-cross">✳</span></div>
+      <h3>Tension</h3>
+      <p>Strategy, structure, and experimentation meet. I test directions, challenge assumptions, and turn complexity into a clear plan.</p>
+      <div class="ritual-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    </article>
+    <article class="ritual-step">
+      <div class="ritual-step-top"><span>03 / MAKE IT REAL</span><span class="ritual-cross">✳</span></div>
+      <h3>Immersion</h3>
+      <p>Design and engineering come together through detail, motion, performance, and iteration—until the experience feels effortless.</p>
+      <div class="ritual-mini-sigil" aria-hidden="true"><svg viewBox="0 0 220 220" fill="none"><path d="M110 5 92 56 58 23 76 72 18 60 62 96 7 110 64 121 29 166 82 143 91 214 110 158 129 214 138 143 191 166 156 121 213 110 158 96 202 60 144 72 162 23 128 56Z"/><path d="M110 5V158M58 23 138 143M162 23 82 143M18 60 156 121M202 60 64 121M7 110H213"/></svg></div>
+    </article>
+  </div>
+  <div class="ritual-footer"><span>THOUGHTFUL BY DESIGN.</span><span>BUILT TO FEEL DIFFERENT. <b>↗</b></span></div>
+</section>
 <section class="section-pad services"><div class="section-head reveal"><span class="eyebrow">04 / What I bring</span><span class="mono">Think / Build / Improve</span></div><div class="service-word reveal">Creative development <span>✳</span><small>01</small></div><div class="service-word reveal">AI experiments <span>↗</span><small>02</small></div><div class="service-word reveal">Digital products <span>✳</span><small>03</small></div><div class="service-word reveal">Connected systems <span>⌁</span><small>04</small></div></section>
 <section class="section-pad" id="work"><div class="work-intro reveal"><div><div class="eyebrow">04 / Selected projects</div><h2>Made to<br><span class="red">matter.</span></h2></div><p>A few ideas I've been turning into prototypes — exploring real-world problems through software, AI, and connected systems.</p></div>
 <div class="project-list">
