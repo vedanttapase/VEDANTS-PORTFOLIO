@@ -205,9 +205,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--red);outline-offset
 
 /* Large face-fitted crimson tribal eye sigil, inspired by the supplied portrait reference. */
 .hero-bg{background:radial-gradient(ellipse at 50% 28%,#8b000b 0%,#3c0006 38%,#080808 83%)}
-.portrait-wrap{width:min(76vw,600px);height:76%;top:7%;mask-image:linear-gradient(to bottom,#000 0%,#000 77%,transparent 100%)}
-.thorn{top:20%;width:min(86vw,850px);height:min(58vw,510px);opacity:.98;mix-blend-mode:screen}
-@media(max-width:700px){.portrait-wrap{width:min(92vw,470px);height:69%;top:10%}.thorn{top:23%;width:112vw;height:68vw;max-height:370px}.hero-copy{margin-top:clamp(300px,47vh,430px)}}
+.portrait-wrap{width:min(46vw,380px);height:52%;top:7%;mask-image:linear-gradient(to bottom,#000 0%,#000 72%,transparent 100%)}
+.hero-title{font-size:clamp(48px,10.2vw,142px);letter-spacing:-.09em;line-height:.84}
+.hero-copy{bottom:clamp(88px,12vh,130px)}
+.thorn{top:20%;width:min(72vw,650px);height:min(46vw,390px);opacity:.98;mix-blend-mode:screen}
+@media(max-width:700px){.portrait-wrap{width:min(72vw,320px);height:48%;top:10%}.hero-title{font-size:clamp(48px,13vw,88px)}.hero-copy{bottom:clamp(92px,13vh,118px)}.thorn{top:23%;width:100vw;height:62vw;max-height:320px}}
 @media(prefers-reduced-motion:reduce){.thorn{transition:none}}
 
 
