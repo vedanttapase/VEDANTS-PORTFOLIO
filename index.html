@@ -34,6 +34,52 @@ section{position:relative}.section-pad{padding:clamp(90px,13vw,180px) var(--pad)
 @media(min-width:900px){.hero-copy{margin-top:clamp(280px,43vh,490px)}.portrait-wrap{height:70%;width:min(43vw,500px)}}
 @media(max-width:700px){header{padding-top:18px;padding-bottom:18px}.brand{font-size:10px}nav{gap:13px}nav a{font-size:9px}.hero{min-height:720px;padding-inline:15px}.hero-meta{top:14%;left:20px;right:20px}.hero-meta span{font-size:8px}.portrait-wrap{top:13%;width:min(88vw,410px);height:51%}.thorn{top:23%;width:31vw;height:28vw}.hero-copy{margin-top:clamp(265px,43vh,390px)}.hero-title{font-size:clamp(45px,13.5vw,90px)}.hero-role{font-size:8px;letter-spacing:.15em;margin-top:20px}.hero-bottom{bottom:22px}.side-note{font-size:8px}.section-head{margin-bottom:35px}.about-grid{grid-template-columns:1fr;gap:24px}.stats{margin-top:28px}.work-intro{display:block}.work-intro p{margin-top:30px}.project{grid-template-columns:30px minmax(0,1fr) 20px;gap:12px;padding:25px 0}.project-desc{grid-column:2/3;margin-top:5px}.project-arrow{grid-column:3;grid-row:1}.process-grid{grid-template-columns:1fr 1fr}.process{padding:24px 15px 24px 0;margin-right:15px;border-bottom:1px solid var(--line)}.process:nth-child(2){border-right:0;margin:0}.process:nth-child(3){border-bottom:0}.process:nth-child(4){border:0;margin:0}.process h3{margin-top:25px}.contact-bottom{align-items:flex-start;flex-direction:column}.socials{flex-wrap:wrap}footer{font-size:8px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none;filter:none}}
+
+/* Integrated silhouette treatment + larger contact links */
+.portrait-wrap{
+  z-index:1; width:min(49vw,610px); height:82%; top:5%;
+  overflow:hidden; border-radius:0;
+  mask-image:radial-gradient(ellipse 72% 68% at 54% 42%,#000 34%,rgba(0,0,0,.86) 56%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 72% 68% at 54% 42%,#000 34%,rgba(0,0,0,.86) 56%,transparent 78%);
+  mix-blend-mode:screen;
+}
+.portrait{
+  object-fit:cover; object-position:center 12%; opacity:.68;
+  filter:grayscale(1) brightness(.45) contrast(1.22) sepia(1) saturate(5) hue-rotate(315deg);
+  mix-blend-mode:screen;
+}
+.hero-bg{
+  background:
+    radial-gradient(ellipse at 72% 37%,rgba(184,0,12,.32) 0,rgba(74,0,6,.17) 26%,transparent 53%),
+    radial-gradient(ellipse at 50% 35%,#35080b 0,transparent 40%),
+    linear-gradient(180deg,#0b0909,#080808 78%);
+}
+.hero:after{
+  content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:radial-gradient(ellipse at 72% 42%,transparent 18%,rgba(8,8,8,.12) 49%,rgba(8,8,8,.62) 100%);
+}
+.contact{align-items:stretch}
+.contact-bottom{align-items:stretch; flex-direction:column; gap:28px}
+.socials{
+  display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px;
+  width:100%; font:600 13px Manrope,Arial,sans-serif; letter-spacing:.04em;
+}
+.socials a{
+  min-height:86px; display:flex; align-items:center; justify-content:center; gap:9px;
+  padding:20px 15px; border:1px solid #632027; border-radius:12px;
+  background:linear-gradient(145deg,rgba(225,11,24,.10),rgba(16,16,16,.72));
+  color:#f4f2ef; font-size:clamp(13px,1.15vw,16px); text-align:center;
+  transition:transform .25s,border-color .25s,background .25s,box-shadow .25s;
+}
+.socials a:hover{transform:translateY(-4px);border-color:var(--red);background:rgba(225,11,24,.13);box-shadow:0 8px 30px #e10b181c;color:#fff}
+@media(max-width:700px){
+  .portrait-wrap{top:9%;width:min(100vw,500px);height:59%;mask-image:radial-gradient(ellipse 78% 68% at 54% 40%,#000 28%,rgba(0,0,0,.78) 52%,transparent 78%);-webkit-mask-image:radial-gradient(ellipse 78% 68% at 54% 40%,#000 28%,rgba(0,0,0,.78) 52%,transparent 78%)}
+  .portrait{opacity:.55}
+  .contact-bottom{gap:22px}
+  .socials{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .socials a{min-height:68px;font-size:14px;padding:16px 10px}
+}
+
 </style>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
@@ -295,7 +341,7 @@ header{transform:translateY(0)!important}
 
 </div></section>
 <section class="section-pad"><div class="section-head reveal"><span class="eyebrow">05 / How I work</span><span class="mono">From first thought to first version</span></div><div class="process-grid"><article class="process reveal"><span class="process-num">01 / DISCOVER</span><h3>Find the why.</h3><p>Understand the problem, the people, and what a useful solution should actually do.</p></article><article class="process reveal delay1"><span class="process-num">02 / EXPLORE</span><h3>Try the idea.</h3><p>Break it into clear pieces, test directions, and choose the simplest path forward.</p></article><article class="process reveal delay2"><span class="process-num">03 / BUILD</span><h3>Make it real.</h3><p>Turn concepts into a working prototype with a considered interface and solid foundations.</p></article><article class="process reveal delay3"><span class="process-num">04 / REFINE</span><h3>Make it better.</h3><p>Test, learn, fix the rough edges, and improve performance and usability.</p></article></div></section>
-<section class="section-pad contact" id="contact"><div class="eyebrow reveal">06 / Have an idea?</div><h2 class="reveal delay1">Let's make<br>it <em>real.</em></h2><div class="contact-bottom reveal delay2"><div class="socials"><a href="https://github.com/vedanttapase" target="_blank" rel="noreferrer">GitHub ↗</a><a href="https://www.linkedin.com/in/vedant-tapase-ab3239396/" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="mailto:vedanttapase70@gmail.com">Contact ↗</a><a href="mailto:vedanttapase70@gmail.com">Email ↗</a></div></div></section>
+<section class="section-pad contact" id="contact"><div class="eyebrow reveal">06 / Have an idea?</div><h2 class="reveal delay1">Let's make<br>it <em>real.</em></h2><div class="contact-bottom reveal delay2"><div class="socials"><a href="mailto:vedanttapase70@gmail.com" aria-label="Email Vedant">✉ &nbsp; Email ↗</a><a href="https://github.com/vedanttapase" target="_blank" rel="noreferrer" aria-label="GitHub profile">⌘ &nbsp; GitHub ↗</a><a href="https://www.linkedin.com/in/vedant-tapase-ab3239396/" target="_blank" rel="noreferrer" aria-label="LinkedIn profile">in &nbsp; LinkedIn ↗</a><a href="https://www.instagram.com/" target="_blank" rel="noreferrer" aria-label="Instagram">◎ &nbsp; Instagram ↗</a></div></div></section>
 <footer><span>© <span id="currentYear">2026</span> VEDANT</span><span>BUILT WITH INTENTION <span class="red">✳</span></span><a href="#home">BACK TO TOP ↑</a></footer>
 </main>
 <div class="cursor-orb" aria-hidden="true"><img src="winged-skull-cursor.svg" alt=""></div>
